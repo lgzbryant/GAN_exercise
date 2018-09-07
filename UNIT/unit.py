@@ -21,7 +21,6 @@ import torch.nn as nn
 import torch.nn.functional as F
 import torch
 
-
 parser = argparse.ArgumentParser()
 parser.add_argument('--start_epoch', type=int, default=0, help='epoch to start training from')
 parser.add_argument('--total_epoches', type=int, default=200, help='number of epochs of training')
@@ -158,9 +157,6 @@ for epoch in range(opt.start_epoch, opt.total_epoches):
         
         real_A= Variable(batch['A'].type(Tensor))
         real_B= Variable(batch['B'].type(Tensor))
-        
-        # real_target=Variable(Tensor(np.ones((real_A.size(0), *patch))),requires_grad=False)
-        # fake_target=Variable(Tensor(np.zeros(real_B.size(0), *patch))), requires_grad=False)
         
         real_target = Variable(Tensor(np.ones((real_A.size(0), *patch))), requires_grad=False)
         fake_target = Variable(Tensor(np.zeros((real_A.size(0), *patch))), requires_grad=False)
